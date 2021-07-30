@@ -1,0 +1,30 @@
+<div *ngIf="user.password!==user.rePass" class="error">
+    <p>Passwords are not equal</p>
+</div>
+
+<div *ngIf="user.username==''" class="error">
+    <p>Username must not be empty</p>
+</div>
+
+<div *ngIf="mail.invalid" class="error">
+    <p>Email is invalid</p>
+</div>
+
+<div *ngIf="err!==''" class="error">
+    <p>{{err}}</p>
+</div>
+
+
+<form #f="ngForm" (ngSubmit)="onClick()">
+    <input type="text" name="username" placeholder="Username" [(ngModel)]="user.username" minlength="5">
+    <br>
+    <input type="text" name="email" placeholder="Email" [(ngModel)]="user.email" minlength="5" email #mail="ngModel">
+    <br>
+    <input type="password" name="password" placeholder="Password" minlength="5" maxlength="20"
+        [(ngModel)]="user.password">
+    <br>
+    <input type="password" name="rePass" placeholder="Repeat Password" minlength="5" maxlength="20"
+        [(ngModel)]="user.rePass">
+    <br><br>
+    <button mat-button>Register</button>
+</form>

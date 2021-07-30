@@ -1,0 +1,9 @@
+<div *ngFor="let book of books">
+    <a mat-button href="/books/details/{{book._id}}" class="book-link">{{book.title}}</a>
+</div>
+
+<div *ngIf="books.length==0">
+    <p class="no">No books found</p>
+    <br>
+    <a href="/books/create" class="create-link" mat-button>Add book</a>
+</div>

@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="mat-elevation-z24">
+    <a href="" mat-button>
+        <h1>
+            <app-logo></app-logo>
+        </h1>
+    </a>
+
+    <span class="spacer"></span>
+    <a mat-button href="/books/all" routerLinkActive="active">All Books</a>
+    <a mat-button href="/books/search" routerLinkActive="active">Search books</a>
+    <a mat-button href="/books/create" routerLinkActive="active">Create book</a>
+    <button mat-button (click)="logoutClick()">Logout</button>
+</mat-toolbar>

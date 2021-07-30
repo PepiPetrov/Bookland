@@ -1,0 +1,19 @@
+.no {
+    /* margin-left: 705px; */
+    margin-top: 200px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.book-link {
+    margin-left: 725px;
+    margin-top: 100px;
+}
+
+.create-link {
+    background-color: #5f02d8e1;
+    color: white;
+    padding: 15px 25px;
+    margin-left: 710px;
+    position: relative;
+}

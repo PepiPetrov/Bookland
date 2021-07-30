@@ -1,0 +1,6 @@
+<div *ngIf="isLogged!==null">
+    <app-user-nav></app-user-nav>
+</div>
+<div *ngIf="isLogged==null">
+    <app-guest-nav></app-guest-nav>
+</div>

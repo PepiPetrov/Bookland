@@ -1,0 +1,23 @@
+<div *ngIf="user.username==''" class="error">
+    <p>Username must not be empty</p>
+</div>
+
+<div *ngIf="user.password==''" class="error">
+    <p>Password must not be empty</p>
+</div>
+
+<div *ngIf="err!==''" class="error">
+    <p>{{err}}</p>
+</div>
+
+
+<form #f="ngForm" (ngSubmit)="onClick()">
+    <input type="text" name="username" placeholder="Username" [(ngModel)]="user.username" minlength="5">
+    <br>
+    <input type="text" name="email" placeholder="Email" [(ngModel)]="user.email" minlength="5">
+    <br>
+    <input type="password" name="password" placeholder="Password" minlength="5" maxlength="20"
+        [(ngModel)]="user.password">
+    <br><br>
+    <button mat-button>Login</button>
+</form>
