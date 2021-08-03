@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { NavModule } from './nav/nav.module';
 import { AuthModule } from './auth/auth.module';
 import { BooksModule } from './books/books.module';
+import { SearchModule } from './books/search/search.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BooksModule } from './books/books.module';
     CoreModule,
     NavModule,
     AuthModule,
-    BooksModule
+    BooksModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

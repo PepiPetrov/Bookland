@@ -8,6 +8,10 @@ import { IsGuest } from './guards/isGuest';
 import { AllBooksComponent } from './books/all-books/all-books.component';
 import { CreateComponent } from './books/create/create.component';
 import { IsAuth } from './guards/isAuth';
+import { DetailsComponent } from './books/details/details.component';
+import { EditComponent } from './books/edit/edit.component';
+import { MainComponent } from './books/search/main/main.component';
+import { ProfileComponent } from './books/profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +19,10 @@ const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
   { path: 'books/all', component: AllBooksComponent },
   { path: 'books/create', component: CreateComponent, canActivate: [IsAuth] },
+  { path: 'books/details/:id', component: DetailsComponent },
+  { path: 'books/edit/:id', component: EditComponent, canActivate: [IsAuth] },
+  { path: 'books/search', component: MainComponent },
+  { path: 'books/profile', component: ProfileComponent, canActivate: [IsAuth] },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
