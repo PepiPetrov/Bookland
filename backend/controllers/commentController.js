@@ -3,7 +3,7 @@ const model = require('../models/Comment')
 const Book = require('../models/Book')
 const jwt = require('../util/jwt')
 
-connect('mongodb+srv://pepi:pepi@bookland.uowng.mongodb.net/test?authSource=admin&replicaSet=atlas-9os56k-shard-0&readPreference=primary&appname=mongodb-vscode%200.6.10&ssl=true', {
+connect('mongodb://localhost/bookland', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: true
