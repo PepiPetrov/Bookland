@@ -7,7 +7,7 @@ const schema = new Schema({
     },
     author: String,
     year: Number,
-    rating: String,
+    rating: Number,
     description: String,
     linkToBuy: {
         type: String,
@@ -23,7 +23,12 @@ const schema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    liked: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
+    ]
 })
 
 module.exports = model('Book', schema)

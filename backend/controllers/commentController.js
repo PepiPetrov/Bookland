@@ -3,7 +3,7 @@ const model = require('../models/Comment')
 const Book = require('../models/Book')
 const jwt = require('../util/jwt')
 
-connect('mongodb://localhost/books', {
+connect('mongodb+srv://pepi:pepi@bookland.uowng.mongodb.net/test?authSource=admin&replicaSet=atlas-9os56k-shard-0&readPreference=primary&appname=mongodb-vscode%200.6.10&ssl=true', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: true
@@ -11,14 +11,12 @@ connect('mongodb://localhost/books', {
 
 async function addComment(req, res) {
     if (req.body.token) {
-
         try {
             const comment = req.body.comment
-            const user = jwt.decode(req.body.token)._id
+            const user = jwt.decode(req.body.token).user._id
             comment.author = user
             comment.bookId = req.params.bookId
-            console.log(user);
-            console.log(req.params.bookId)
+            delete comment['_id']
             const commentId = (await model.create(comment))._id
             const book = await Book.findById(req.params.bookId)
             book.comments.push(commentId)
@@ -35,8 +33,9 @@ async function addComment(req, res) {
 async function editComment(req, res) {
     if (req.body.token) {
         const authorId = (await model.findById(req.params.id)).author
-        const userId = jwt.decode(req.body.token)._id
+        const userId = jwt.decode(req.body.token).user._id
         req.body.comment.author = authorId
+        delete req.body.comment['_id']
         if (authorId == userId) {
             await model.findByIdAndUpdate(req.params.id, req.body.comment)
         }
@@ -49,7 +48,7 @@ async function editComment(req, res) {
 async function removeComment(req, res) {
     if (req.body.token) {
         const authorId = (await model.findById(req.params.id)).author
-        const userId = jwt.decode(req.body.token)._id
+        const userId = jwt.decode(req.body.token).user._id
         if (authorId == userId) {
             await model.findByIdAndRemove(req.params.id)
         }

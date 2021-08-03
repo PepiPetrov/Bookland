@@ -3,7 +3,7 @@ const model = require('../models/User')
 const bcrypt = require('../util/bcrypt')
 const token = require('../util/jwt')
 
-connect('mongodb://localhost/books', {
+connect('mongodb+srv://pepi:pepi@bookland.uowng.mongodb.net/test?authSource=admin&replicaSet=atlas-9os56k-shard-0&readPreference=primary&appname=mongodb-vscode%200.6.10&ssl=true', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: true
@@ -16,8 +16,7 @@ async function register(req, res) {
     if (exists) {
         try {
             const userCreated = await model.create(user)
-            res.json(token.encode(userCreated))
-            res.status(201).json({ message: 'Success', token: token.encode(userCreated) })
+            res.status(201).json({ message: 'Success', token: token.encode(userCreated), userId: userCreated._id })
         } catch (e) {
             res.status(409).json({ message: 'Username and email must be unique!' })
         }
@@ -33,8 +32,9 @@ async function login(req, res) {
     const findByPass = findByUsername.filter(x => bcrypt.compare(user.password, x.password))[0]
     if (findByPass == undefined) {
         res.status(404).json({ message: 'User not found!' }).end()
+        return
     }
-    res.status(201).json({ message: 'Success', token: token.encode(findByPass) }).end()
+    res.status(201).json({ message: 'Success', token: token.encode(findByPass), userId: findByPass._id }).end()
 }
 
 function logout(req, res) {

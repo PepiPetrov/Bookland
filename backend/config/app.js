@@ -16,7 +16,7 @@ app.use(session({
     resave: true
 }))
 
-app.use(bp({ extended: false }))
+app.use(bp({ extended: true }))
 
 app.use('/api', router)
 
