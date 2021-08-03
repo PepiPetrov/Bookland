@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private store: AuthStore) { }
 
   ngOnInit(): void {
-    this.isUser=sessionStorage.getItem('token')
+    this.isUser=localStorage.getItem('token')
   }
 
 }

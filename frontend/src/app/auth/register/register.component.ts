@@ -23,11 +23,11 @@ export class RegisterComponent implements OnInit {
 
   async onClick() {
     try {
-      await this.service.register(this.user).toPromise()
-      const res = await this.service.login(this.user).toPromise()
+      const res = await this.service.register(this.user).toPromise()
       const data = res as unknown as ISuccess
       this.store.login(data.token)
       localStorage.setItem('token', data.token)
+      localStorage.setItem('userId', data.userId)
       this.router.navigate(['/home'])
       window.location.reload()
     } catch (e) {

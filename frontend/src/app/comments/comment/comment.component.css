@@ -1,0 +1,11 @@
+.content, .btns {
+    text-align: center;
+}
+
+app-edit-comment {
+    text-align: center;
+}
+
+.hide-btn {
+    margin-left: 700px;
+}

@@ -1,0 +1,44 @@
+<form (ngSubmit)="onSubmit()">
+    <input type="text" id="title" [(ngModel)]="book.title" name="title" placeholder="Book title" #title="ngModel">
+    <br>
+
+    <div *ngIf="(book.title==''||book.title.length<2)" class="error">
+        <p>Title is required and must be at least two characters long!</p>
+    </div>
+
+    <input type="text" id="author" [(ngModel)]="book.author" name="author" placeholder="Book author">
+    <div *ngIf="book.author==''||book.author.length<2" class="error">
+        <p>Author is required and must be at least two characters long!</p>
+    </div>
+    <br>
+    <textarea id="description" [(ngModel)]="book.description" name="description"
+        placeholder="Book description"></textarea>
+    <br>
+
+    <div *ngIf="book.description==''||book.description.length<2" class="error">
+        <p>Description is required and must be at least two characters long!</p>
+    </div>
+    <br>
+    <input type="number" id="rating" [(ngModel)]="book.rating" name="rating" placeholder="Book rating" value="">
+    <div *ngIf="book.rating==0" class="error">
+        <p>Rating is required!</p>
+    </div>
+    <div *ngIf="book.rating>10" class="error">
+        <p>Rating max value is 10!</p>
+    </div>
+    <br>
+    <input type="text" id="year" [(ngModel)]="book.year" name="year" placeholder="Year of publishing">
+    <div *ngIf="book.year==0" class="error">
+        <p>Year of publishing is required!</p>
+    </div>
+    <br>
+    <input type="text" id="linkToBuy" [(ngModel)]="book.linkToBuy" name="link" placeholder="Where to buy the book">
+    <br>
+    <input type="text" id="img" [(ngModel)]="book.img" name="img" placeholder="Image url">
+    <div *ngIf="book.img==''||!isUrl(book.img)" class="error">
+        <p>Image URL must be valid!</p>
+    </div>
+    <br><br>
+    <button mat-button class="create-btn" button>Edit book</button>
+    <br>
+</form>

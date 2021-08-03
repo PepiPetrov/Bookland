@@ -1,0 +1,27 @@
+.card {
+  max-width: 300px;
+  margin-left: 550px;
+}
+
+.buy-link {
+  background-color: #5f02d8e1;
+  color: white;
+  padding: 10px 20px;
+  /* margin-left: 710px; */
+  position: relative;
+  text-decoration: none;
+}
+
+.liked {
+  font-size: 15px;
+}
+
+.author-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.buy{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

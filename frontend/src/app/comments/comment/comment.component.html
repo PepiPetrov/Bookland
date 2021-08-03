@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-content class="content">{{comment.content}}</mat-card-content>
+    <mat-card-actions *ngIf="comment.author==userId" class="btns">
+        <button mat-raised-button color="accent" (click)="toggle()">Edit comment</button>
+        <button mat-raised-button color="warn" (click)="remove()">Remove comment</button>
+    </mat-card-actions>
+</mat-card>
+<br>
+
+<app-edit-comment *ngIf="isShow" [comment]="comment"></app-edit-comment>
+<br>
+<button mat-raised-button color="accent" (click)="hide()" *ngIf="isShow" class="hide-btn">Hide comment</button>
+
+<br>

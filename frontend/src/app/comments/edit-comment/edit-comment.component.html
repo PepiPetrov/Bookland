@@ -1,0 +1,5 @@
+<form (ngSubmit)="edit()">
+    <textarea [(ngModel)]="comment.content" name="content">{{comment.content}}</textarea>
+    <br>
+    <button type="submit" mat-raised-button color="accent">Edit comment</button>
+</form>

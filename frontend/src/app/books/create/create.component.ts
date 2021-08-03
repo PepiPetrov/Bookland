@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IBook } from 'src/app/interfaces/book';
 import { BooksService } from '../books.service';
 
@@ -7,10 +8,12 @@ import { BooksService } from '../books.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
-  book: IBook = { title: '', author: '', description: '', rating: '', year: 0, linkToBuy: '', img: '',creator:'',comments:[],_id:'' }
 
-  constructor(private service: BooksService) {
+export class CreateComponent implements OnInit {
+  book: IBook = { liked: [], title: '', author: '', description: '', rating: 0, year: 0, linkToBuy: '', img: '', creator: '', comments: [], _id: '' }
+  isError: boolean = false
+
+  constructor(private service: BooksService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -20,10 +23,14 @@ export class CreateComponent implements OnInit {
     return /https?:\/\//.test(img)
   }
 
-  onSubmit() {
-    this.service.create(this.book).subscribe(x=>{
-      
-    })
+  async onSubmit() {
+    try {
+      await this.service.create(this.book).toPromise()
+      this.router.navigate(['/home'])
+    } catch (e) {
+      this.isError = true
+      console.log(e);
+    }
   }
 
 }

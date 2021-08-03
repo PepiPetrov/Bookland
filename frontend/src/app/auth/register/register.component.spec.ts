@@ -18,12 +18,4 @@ describe('RegisterComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('error must be empty string', () => {
-    expect(component.err).toBeFalsy()
-  })
 });

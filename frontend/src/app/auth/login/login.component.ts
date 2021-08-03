@@ -26,9 +26,10 @@ export class LoginComponent implements OnInit {
       const data = res as unknown as ISuccess
       this.store.login(data.token)
       localStorage.setItem('token', data.token)
+      localStorage.setItem('userId', data.userId)
       window.location.href = 'http://localhost:4200/home'
     } catch (e) {
-      this.err = e.message
+      this.err = 'User not found!'
       setTimeout(() => {
         this.err = ''
       }, 10000)

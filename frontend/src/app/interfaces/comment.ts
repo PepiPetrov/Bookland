@@ -1,4 +1,5 @@
 export interface IComment {
     author: string,
-    content: string
+    content: string,
+    _id: string
 }

@@ -1,0 +1,35 @@
+<br>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>{{book.title}}</mat-card-title>
+        <mat-card-subtitle>Author: {{book.author}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{book.img}}">
+    <mat-card-content>
+        <p>
+            Description: <br>{{book.description}}
+        </p>
+        <p>
+            Rating: {{book.rating}}/10
+        </p>
+        <p>
+            Year of publishing: {{book.year}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="book.creator==userId" class="author-links">
+        <a mat-raised-button color="accent" href="/books/edit/{{book._id}}">Edit</a>
+        <button mat-raised-button color="warn" (click)="onRemove()">Remove</button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="book.creator!==userId&&!book.liked.includes(userId)">
+        <button mat-raised-button color="primary" (click)="like()">Like</button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="book.liked.includes(userId)">
+        <p class="liked">You have already liked the book</p>
+    </mat-card-actions>
+    <mat-card-actions class="buy">
+        You can buy the book <a class="buy-link" href="{{book.linkToBuy}}" target="_blank">here</a>
+    </mat-card-actions>
+    <p></p>
+</mat-card>
+<br>
+<app-all-comments [bookId]="book._id"></app-all-comments>

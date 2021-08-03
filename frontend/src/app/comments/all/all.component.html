@@ -1,0 +1,13 @@
+<app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+<div *ngIf="comments.length==0">
+    <p class="no">No comments yet</p>
+</div>
+<br>
+
+<div *ngIf="userId!=='null'">
+    <form (ngSubmit)="onSubmit()">
+        <textarea [(ngModel)]="comment.content" placeholder="Your comment" name="content"></textarea>
+        <br>
+        <button type="submit" mat-button class="create-btn">Create comment</button>
+    </form>
+</div>

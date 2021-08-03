@@ -1,0 +1,15 @@
+<p class="info">Created books: </p>
+<div *ngFor="let book of created">
+    <a href="/books/details/{{book._id}}" mat-button class="book-link">{{book.title}}</a>
+</div>
+<div *ngIf="created.length==0">
+    <p class="no">No books created yet</p>
+</div>
+
+<p class="info">Liked books: </p>
+<div *ngFor="let book of books">
+    <a href="/books/details/{{book._id}}" mat-button class="book-link">{{book.title}}</a>
+</div>
+<div *ngIf="books.length==0">
+    <p class="no">No books liked yet</p>
+</div>

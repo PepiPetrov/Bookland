@@ -4,11 +4,12 @@ export interface IBook {
     title: string,
     author: string,
     year: number,
-    rating: string,
+    rating: number,
     description: string,
     linkToBuy: string,
     img: string,
     comments: IComment[]
-    creator: string,
-    _id: string
+    creator: any,
+    _id: string,
+    liked: string[]
 }

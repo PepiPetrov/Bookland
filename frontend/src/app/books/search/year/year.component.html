@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Keyword" aria-label="Keyword" [(ngModel)]="search" name="search">
+    <br><br>
+    <button type="submit">Search</button>
+</form>
+
+<div *ngFor="let book of books">
+    <a mat-button href="/books/details/{{book._id}}" class="book-link">{{book.title}}</a>
+</div>
+
+<div *ngIf="books?.length==0">
+    <p class="no">No books found</p>
+</div>

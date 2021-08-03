@@ -8,13 +8,14 @@ import { BooksService } from '../books.service';
   styleUrls: ['./all-books.component.css']
 })
 export class AllBooksComponent implements OnInit {
-  public books: IBook[] = []
+  public books!: IBook[]
   constructor(private service: BooksService) { }
 
   ngOnInit(): void {
     this.service.getAll().subscribe(x => {
       this.books = x
     })
+
 
   }
 

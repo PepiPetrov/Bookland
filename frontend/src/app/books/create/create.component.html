@@ -1,3 +1,6 @@
+<div *ngIf="isError" class="error">
+    <p>Title must be unique!</p>
+</div>
 <form (ngSubmit)="onSubmit()">
     <input type="text" id="title" [(ngModel)]="book.title" name="title" placeholder="Book title" #title="ngModel">
     <br>
@@ -19,9 +22,12 @@
         <p>Description is required and must be at least two characters long!</p>
     </div>
     <br>
-    <input type="text" id="rating" [(ngModel)]="book.rating" name="rating" placeholder="Book rating">
-    <div *ngIf="book.author==''" class="error">
+    <input type="number" id="rating" [(ngModel)]="book.rating" name="rating" placeholder="Book rating" value="">
+    <div *ngIf="book.rating==0" class="error">
         <p>Rating is required!</p>
+    </div>
+    <div *ngIf="book.rating>10" class="error">
+        <p>Rating max value is 10!</p>
     </div>
     <br>
     <input type="text" id="year" [(ngModel)]="book.year" name="year" placeholder="Year of publishing">
@@ -37,5 +43,6 @@
     </div>
     <br><br>
     <button mat-button class="create-btn">Create book</button>
+    <br>
 
 </form>

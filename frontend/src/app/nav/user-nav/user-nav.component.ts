@@ -17,7 +17,7 @@ export class UserNavComponent implements OnInit {
   logoutClick() {
     this.store.logout()
     localStorage.removeItem('token')
-    this.router.navigate(['/auth/login'])
+    localStorage.removeItem('userId')
     window.location.reload()
   }
 
