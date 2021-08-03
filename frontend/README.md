@@ -25,3 +25,31 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# App functionality
+
+## All books pagе
+
+Here you will find all books created. Links are in color Deep Purple/Amber
+
+## Details
+
+Here you will find information about a book, including title, author, description, year of publishing, rating (number from 1 to 10), image, link to buy it from online shop (not required). If you have created the book, you will see buttons for editing and deleting the book.
+
+## Comments
+
+On each book details after the information about the book, you will find section with comments. If you are logged, you wiil see a form for creating comment. If you have created comment, you will see buttons for editing and removing it.
+
+## Edit 
+
+You can access this page only if you are the owner (there is a route guard and backend validation). All fields will be filled with information for the book.
+
+## Search
+
+You can search by three criteria: title, author and year of publishing. Forms for entering keyword are seperated in tabs.
+
+## Backend
+
+You can find the backend here: 
+
