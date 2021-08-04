@@ -9,6 +9,7 @@ import { BooksService } from '../books.service';
 })
 export class AllBooksComponent implements OnInit {
   public books!: IBook[]
+  isUser: string | null = localStorage.getItem('token')
   constructor(private service: BooksService) { }
 
   ngOnInit(): void {
