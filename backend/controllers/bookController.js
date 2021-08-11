@@ -4,7 +4,7 @@ const Comment = require('../models/Comment')
 const User = require('../models/User')
 const jwt = require('../util/jwt')
 
-connect('mongodb://localhost/bookland', {
+connect(process.env.MONGO_CONNECTION_STRING || 'mongodb+srv://pepi:pepi@bookland.tmato.mongodb.net/bookland?retryWrites=true&w=majority&authSource=admin', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: true
@@ -126,4 +126,24 @@ async function like(req, res) {
     }
 }
 
-module.exports = { getAll, getOne, create, edit, remove, searchByName, searchByYear, getUserLikedBooks, like, searchByAuthor, getUserCreatedBooks }
+async function unlike(req, res) {
+    if (req.body.token) {
+        try {
+            const bookId = req.params.id
+            const userId = jwt.decode(req.body.token).user._id
+            const user = await User.findById(userId)
+            const book = await model.findById(bookId)
+            user.favouriteBooks.splice(user.favouriteBooks.indexOf(bookId), 1)
+            await User.findByIdAndUpdate(userId, user)
+            book.liked.splice(book.liked.indexOf(userId), 1)
+            await model.findByIdAndUpdate(bookId, book)
+            res.status(200).end()
+        } catch (e) {
+            res.json(jwt.decode(req.body.token)).end()
+        }
+    } else {
+        res.status(401).json({ message: 'Please login' }).end()
+    }
+}
+
+module.exports = { getAll, getOne, create, edit, remove, searchByName, searchByYear, getUserLikedBooks, like, unlike, searchByAuthor, getUserCreatedBooks }
