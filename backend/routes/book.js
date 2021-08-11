@@ -11,6 +11,7 @@ router.post('/search/author', controller.searchByAuthor)
 router.post('/search/name', controller.searchByName)
 router.post('/create', controller.create)
 router.post('/like/:id', isAuth, controller.like)
+router.post('/unlike/:id', isAuth, controller.unlike)
 router.put('/edit/:id', isAuth, controller.edit)
 router.delete('/remove/:id', isAuth, controller.remove)
 
