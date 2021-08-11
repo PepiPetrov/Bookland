@@ -37,4 +37,8 @@ export class BooksService {
   like(bookId: string) {
     return this.http.post('http://localhost:3000/api/books/like/' + bookId, { token: localStorage.getItem('token') })
   }
+  
+  unlike(bookId: string) {
+    return this.http.post('http://localhost:3000/api/books/unlike/' + bookId, { token: localStorage.getItem('token') })
+  }
 }
