@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id']
-    
+
     this.service.getOne(this.id).subscribe(x => {
       this.book = x
     })
@@ -35,7 +35,13 @@ export class DetailsComponent implements OnInit {
   like() {
     this.service.like(this.id).subscribe(x => { })
     window.location.reload()
+  }
 
+  unlike() {
+    if (confirm('Are you sure you want to unlike the book?')) {
+      this.service.unlike(this.id).subscribe(x => { })
+      window.location.reload()
+    }
   }
 
 }
