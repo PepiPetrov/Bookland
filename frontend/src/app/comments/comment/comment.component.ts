@@ -23,8 +23,10 @@ export class CommentComponent implements OnInit {
     this.isShow = false
   }
   remove() {
-    this.service.remove(this.comment._id).subscribe(x => { })
-    window.location.reload()
+    if (confirm('Are you sure you want to remove the comment?')) {
+      this.service.remove(this.comment._id).subscribe(x => { })
+      window.location.reload()
+    }
   }
 
 }
