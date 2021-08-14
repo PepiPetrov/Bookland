@@ -18,6 +18,7 @@ export class EditCommentComponent implements OnInit {
     this.service.edit(this.comment, this.comment._id).subscribe(x => {
       this.comment = x
     })
+    alert('Success!')
   }
 
 }
