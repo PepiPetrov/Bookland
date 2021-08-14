@@ -15,8 +15,9 @@ export class EditCommentComponent implements OnInit {
   }
 
   edit() {
-    this.service.edit(this.comment, this.comment._id).subscribe(x => { })
-    window.location.reload()
+    this.service.edit(this.comment, this.comment._id).subscribe(x => {
+      this.comment = x
+    })
   }
 
 }

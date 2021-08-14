@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IComment } from 'src/app/interfaces/comment';
 import { CommentsService } from '../comments.service';
 
@@ -22,6 +23,7 @@ export class CommentComponent implements OnInit {
   hide() {
     this.isShow = false
   }
+
   remove() {
     if (confirm('Are you sure you want to remove the comment?')) {
       this.service.remove(this.comment._id).subscribe(x => { })
