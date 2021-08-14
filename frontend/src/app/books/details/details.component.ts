@@ -34,13 +34,13 @@ export class DetailsComponent implements OnInit {
 
   like() {
     this.service.like(this.id).subscribe(x => { })
-    window.location.reload()
+    this.book.liked.push(String(localStorage.getItem('userId')))
   }
 
   unlike() {
     if (confirm('Are you sure you want to unlike the book?')) {
       this.service.unlike(this.id).subscribe(x => { })
-      window.location.reload()
+      this.book.liked.splice(this.book.liked.indexOf(String(localStorage.getItem('userId')), 1))
     }
   }
 
