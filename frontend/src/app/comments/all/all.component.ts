@@ -26,9 +26,9 @@ export class AllComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.bookId);
-    this.service.createComment(this.comment, this.bookId).subscribe(x => { })
-    window.location.reload()
+    this.service.createComment(this.comment, this.bookId).subscribe(x => {
+      this.comments.push(x)
+    })
   }
 
 }
