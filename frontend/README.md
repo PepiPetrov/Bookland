@@ -49,7 +49,3 @@ You can access this page only if you are the owner (there is a route guard and b
 
 You can search by three criteria: title, author and year of publishing. Forms for entering keyword are seperated in tabs.
 
-## Backend
-
-You can find the backend here: 
-
