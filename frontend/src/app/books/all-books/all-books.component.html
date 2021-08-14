@@ -1,3 +1,4 @@
+{{sort()}}
 <div *ngFor="let book of books">
     <a mat-button href="/#/books/details/{{book._id}}" class="book-link">{{book.title}} - {{book.author}}</a>
 </div>
@@ -8,6 +9,6 @@
     <a href="/#/books/create" class="create-link" mat-button *ngIf="isUser!=null">Add book</a>
 </div>
 
-<div *ngIf="!books">
+<div *ngIf="books==undefined">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>

@@ -8,7 +8,7 @@ import { BooksService } from '../books.service';
   styleUrls: ['./all-books.component.css']
 })
 export class AllBooksComponent implements OnInit {
-  public books!: IBook[]
+  public books: IBook[] = []
   isUser: string | null = localStorage.getItem('token')
   constructor(private service: BooksService) { }
 
@@ -16,8 +16,10 @@ export class AllBooksComponent implements OnInit {
     this.service.getAll().subscribe(x => {
       this.books = x
     })
+  }
 
-
+  sort() {
+    this.books = this.books.sort((a, b) => a.title.localeCompare(b.title))
   }
 
 }
