@@ -20,3 +20,18 @@ input {
     padding: 15px 25px;
     position: relative;
 }
+
+.author {
+    margin-left: 725px;
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.book-link {
+    margin-left: 360px;
+    margin-top: 50px;
+    background-color: #5f02d8e1;
+    color: white;
+    padding: 15px 25px;
+    position: relative;
+}

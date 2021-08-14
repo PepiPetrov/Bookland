@@ -5,7 +5,7 @@
 </form>
 
 <div *ngFor="let book of books">
-    <a mat-button href="/books/details/{{book._id}}" class="book-link">{{book.title}}</a>
+    <a mat-button href="/#/books/details/{{book._id}}" class="book-link">{{book.title}} - {{book.author}}</a>
 </div>
 
 <div *ngIf="books?.length==0">

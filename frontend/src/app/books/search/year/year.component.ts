@@ -18,8 +18,12 @@ export class YearComponent implements OnInit {
   onSubmit() {
     this.service.searchByYear(Number(this.search)).subscribe(x => {
       this.books = x
+      this.sort()
     })
   }
 
+  sort() {
+    this.books = this.books.sort((a, b) => a.title.localeCompare(b.title))
+  }
 
 }

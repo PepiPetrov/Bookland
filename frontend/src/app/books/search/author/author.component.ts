@@ -18,7 +18,11 @@ export class AuthorComponent implements OnInit {
   onSubmit() {
     this.service.searchByAuthor(this.search.toLocaleLowerCase()).subscribe(x => {
       this.books = x
+      this.sort()
     })
+  }
 
+  sort() {
+    this.books = this.books.sort((a, b) => a.title.localeCompare(b.title))
   }
 }

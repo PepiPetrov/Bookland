@@ -9,7 +9,7 @@ import { SearchService } from '../search.service';
   styleUrls: ['./name.component.css']
 })
 export class NameComponent implements OnInit {
-  books!: IBook[]
+  books: IBook[] = []
   search: string = ''
   constructor(private service: SearchService) { }
 
@@ -18,8 +18,11 @@ export class NameComponent implements OnInit {
   onSubmit() {
     this.service.searchByName(this.search.toLocaleLowerCase()).subscribe(x => {
       this.books = x
+      this.sort()
     })
-    
+  }
+  sort() {
+    this.books = this.books.sort((a, b) => a.title.localeCompare(b.title))
   }
 
 }
